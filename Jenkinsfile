@@ -34,4 +34,10 @@ node {
     stage 'Integration test'
 
     stage 'Publish manifest'
+
+    sh('git rev-parse HEAD > GIT_COMMIT_FILE')
+    def long_commit = readFile('GIT_COMMIT_FILE')
+    echo "${long_commit}"
+    def short_commit = long_commit.substring(0, 7)
+    echo "${short_commit}"
 }
